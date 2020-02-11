@@ -84,4 +84,11 @@ defmodule HLS.Plg do
   def generate_vtt_playlist(duration, sequence_number \\ 0) do
     HLS.Plg.Generators.Playlist.Subtitle.VTT.generate(duration, sequence_number)
   end
+
+  @doc """
+    Generate a master playlist for HLS format
+  """
+  def generate_master_playlist(_args) do
+    HLS.Plg.Generators.Playlist.Master.generate(%HLS.Plg.Types.Master{audio: [%HLS.Plg.Types.MasterRow{}], subtitles: [%HLS.Plg.Types.MasterRow{}], video: [%HLS.Plg.Types.MasterRow{}]})
+  end
 end

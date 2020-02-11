@@ -49,4 +49,20 @@ defmodule HLS.PlgTest do
 
     assert HLS.Plg.generate_vtt_playlist(1.2) == result
   end
+
+  test "generate_master_playlist works as expected" do
+    result =
+      """
+      #EXTM3U
+
+      #EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="audio",LANGUAGE="en",NAME="English",DEFAULT=YES,AUTOSELECT=YES,URI="playlist.m3u8"
+
+      #EXT-X-MEDIA:TYPE=SUBTITLES,GROUP-ID="subs",LANGUAGE="en",NAME="English",DEFAULT=NO,AUTOSELECT=YES,FORCED=NO,URI="playlist.m3u8"
+
+      #EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=510000,AUDIO="audio",SUBTITLES="subs",RESOLUTION=640x480
+      playlist.m3u8
+      """
+
+    assert HLS.Plg.generate_master_playlist(42) == result
+  end
 end

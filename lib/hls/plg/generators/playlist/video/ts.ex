@@ -1,12 +1,17 @@
 defmodule HLS.Plg.Generators.Playlist.Video.TS do
   @behaviour HLS.Plg.Behaviours.Generators.Operational
 
-  @spec generate(number, integer) :: bitstring
-  def generate(duration, sequence_number \\ 0, segment_path \\ "")
+  @spec generate(number, integer, bitstring) :: bitstring
+  def generate(duration, sequence_number, segment_path \\ "")
       when is_number(duration) and is_integer(sequence_number) and is_bitstring(segment_path) do
     args = playlist_args(duration, sequence_number, segment_path)
 
-    HLS.Plg.Generators.Playlist.Common.generate(args, opening(args), ending(args))
+    generate(args)
+  end
+
+  @spec generate(args :: HLS.Plg.Types.Common.t) :: bitstring
+  def generate(args) do
+    HLS.Plg.Generators.Playlist.Common.generate(prepare_args(args), opening(args), ending(args))
   end
 
   @spec opening(HLS.Plg.Types.Common.t) :: bitstring
@@ -28,5 +33,9 @@ defmodule HLS.Plg.Generators.Playlist.Video.TS do
   @spec playlist_args(number, integer, bitstring) :: HLS.Plg.Types.Common.t
   def playlist_args(duration, sequence_number \\ 0, segment_path \\ "") do
     %HLS.Plg.Types.Common{duration: duration, segment_extension: ".ts", sequence_number: sequence_number, segment_path: segment_path}
+  end
+
+  defp prepare_args(args) do
+    %{args | segment_extension: ".ts"}
   end
 end

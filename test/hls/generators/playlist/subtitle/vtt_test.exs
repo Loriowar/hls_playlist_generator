@@ -14,7 +14,7 @@ defmodule HLS.PlgTest.Generators.Playlist.Subtitle.VTT do
       segment_0001.vtt
       #EXT-X-ENDLIST
       """
-    assert HLS.Plg.Generators.Playlist.Subtitle.VTT.generate(146) == result
+    assert HLS.Plg.Generators.Playlist.Subtitle.VTT.generate(146, 0) == result
   end
 
   test "fractional number of segments in a duration" do
@@ -29,7 +29,7 @@ defmodule HLS.PlgTest.Generators.Playlist.Subtitle.VTT do
       segment_0001.vtt
       #EXT-X-ENDLIST
       """
-    assert HLS.Plg.Generators.Playlist.Subtitle.VTT.generate(145.8) == result
+    assert HLS.Plg.Generators.Playlist.Subtitle.VTT.generate(145.8, 0) == result
   end
 
   test "proper media sequence based on input args" do

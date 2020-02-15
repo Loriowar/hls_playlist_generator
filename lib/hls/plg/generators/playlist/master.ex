@@ -20,7 +20,7 @@ defmodule HLS.Plg.Generators.Playlist.Master do
   end
 
   defp render_audio_row(row, default \\ false) when is_boolean(default) do
-    ~s(#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="#{@audio_id}",LANGUAGE="#{row.language}",NAME="#{row.name}",DEFAULT=#{bool_to_render_format(default)},AUTOSELECT=YES,URI="#{row.path}")
+    ~s(#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="#{@audio_id}",LANGUAGE="#{row.language}",NAME="#{row.name}",DEFAULT=#{bool_to_render_format(default)},AUTOSELECT=YES,URI="#{row.playlist_path}#{row.playlist_name}")
   end
 
   defp bool_to_render_format(flag) do
@@ -39,7 +39,7 @@ defmodule HLS.Plg.Generators.Playlist.Master do
   end
 
   defp render_subtitles_row(row, default \\ false) do
-    ~s(#EXT-X-MEDIA:TYPE=SUBTITLES,GROUP-ID="#{@subtitles_id}",LANGUAGE="#{row.language}",NAME="#{row.name}",DEFAULT=#{bool_to_render_format(default)},AUTOSELECT=YES,FORCED=#{bool_to_render_format(row.forced)},URI="#{row.path}")
+    ~s(#EXT-X-MEDIA:TYPE=SUBTITLES,GROUP-ID="#{@subtitles_id}",LANGUAGE="#{row.language}",NAME="#{row.name}",DEFAULT=#{bool_to_render_format(default)},AUTOSELECT=YES,FORCED=#{bool_to_render_format(row.forced)},URI="#{row.playlist_path}#{row.playlist_name}")
   end
 
   defp render_video(args) do
@@ -50,6 +50,6 @@ defmodule HLS.Plg.Generators.Playlist.Master do
   end
 
   defp render_video_row(row) do
-    ~s(#EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=#{row.bandwidth},AUDIO="#{@audio_id}",SUBTITLES="#{@subtitles_id}",RESOLUTION=#{row.resolution}\n#{row.path})
+    ~s(#EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=#{row.bandwidth},AUDIO="#{@audio_id}",SUBTITLES="#{@subtitles_id}",RESOLUTION=#{row.resolution}\n#{row.playlist_path}#{row.playlist_name})
   end
 end

@@ -4,7 +4,9 @@ defmodule HLS.Plg.Types.MasterRow do
             forced: false,
             bandwidth: 510000,
             resolution: "640x480",
-            path: "playlist.m3u8"
+            playlist_path: "",
+            playlist_name: "playlist.m3u8",
+            details: %HLS.Plg.Types.Common{}
 
   @type t ::
           %__MODULE__{
@@ -13,6 +15,8 @@ defmodule HLS.Plg.Types.MasterRow do
             forced: boolean,
             bandwidth: integer,
             resolution: bitstring,
-            path: bitstring
+            playlist_path: bitstring,
+            playlist_name: bitstring,
+            details: HLS.Plg.Types.Common.t
           }
 end

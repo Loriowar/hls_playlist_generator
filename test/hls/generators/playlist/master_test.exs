@@ -12,13 +12,13 @@ defmodule HLS.PlgTest.Generators.Playlist.Master do
       #EXT-X-MEDIA:TYPE=SUBTITLES,GROUP-ID="subs",LANGUAGE="en",NAME="English",DEFAULT=NO,AUTOSELECT=YES,FORCED=YES,URI="subs/en/playlist.m3u8"
 
       #EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=1725000,AUDIO="audio",SUBTITLES="subs",RESOLUTION=1280x720
-      video/playlist.m3u8
+      video/pl.m3u8
       """
       args =
         %HLS.Plg.Types.Master{
-          audio: [%HLS.Plg.Types.MasterRow{language: "ru", name: "Russian", path: "audio/rus/playlist.m3u8"}],
-          subtitles: [%HLS.Plg.Types.MasterRow{language: "en", name: "English", forced: true, path: "subs/en/playlist.m3u8"}],
-          video: [%HLS.Plg.Types.MasterRow{bandwidth: 1725000, resolution: "1280x720", path: "video/playlist.m3u8"}]
+          audio: [%HLS.Plg.Types.MasterRow{language: "ru", name: "Russian", playlist_path: "audio/rus/"}],
+          subtitles: [%HLS.Plg.Types.MasterRow{language: "en", name: "English", forced: true, playlist_path: "subs/en/"}],
+          video: [%HLS.Plg.Types.MasterRow{bandwidth: 1725000, resolution: "1280x720", playlist_path: "video/", playlist_name: "pl.m3u8"}]
         }
 
     assert HLS.Plg.Generators.Playlist.Master.generate(args) == result
@@ -33,7 +33,7 @@ defmodule HLS.PlgTest.Generators.Playlist.Master do
       #EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="audio",LANGUAGE="de",NAME="Deutsche",DEFAULT=NO,AUTOSELECT=YES,URI="audio/de/playlist.m3u8"
 
       #EXT-X-MEDIA:TYPE=SUBTITLES,GROUP-ID="subs",LANGUAGE="en",NAME="English",DEFAULT=NO,AUTOSELECT=YES,FORCED=YES,URI="subs/en/playlist.m3u8"
-      #EXT-X-MEDIA:TYPE=SUBTITLES,GROUP-ID="subs",LANGUAGE="ge",NAME="Deutsche",DEFAULT=NO,AUTOSELECT=YES,FORCED=NO,URI="subs/de/playlist.m3u8"
+      #EXT-X-MEDIA:TYPE=SUBTITLES,GROUP-ID="subs",LANGUAGE="de",NAME="Deutsche",DEFAULT=NO,AUTOSELECT=YES,FORCED=NO,URI="subs/de/playlist.m3u8"
 
       #EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=1725000,AUDIO="audio",SUBTITLES="subs",RESOLUTION=1280x720
       video/720p/playlist.m3u8
@@ -43,16 +43,16 @@ defmodule HLS.PlgTest.Generators.Playlist.Master do
     args =
       %HLS.Plg.Types.Master{
         audio: [
-          %HLS.Plg.Types.MasterRow{language: "ru", name: "Russian", path: "audio/rus/playlist.m3u8"},
-          %HLS.Plg.Types.MasterRow{language: "de", name: "Deutsche", path: "audio/de/playlist.m3u8"}
+          %HLS.Plg.Types.MasterRow{language: "ru", name: "Russian", playlist_path: "audio/rus/"},
+          %HLS.Plg.Types.MasterRow{language: "de", name: "Deutsche", playlist_path: "audio/de/"}
         ],
         subtitles: [
-          %HLS.Plg.Types.MasterRow{language: "en", name: "English", forced: true, path: "subs/en/playlist.m3u8"},
-          %HLS.Plg.Types.MasterRow{language: "ge", name: "Deutsche", path: "subs/de/playlist.m3u8"}
+          %HLS.Plg.Types.MasterRow{language: "en", name: "English", forced: true, playlist_path: "subs/en/"},
+          %HLS.Plg.Types.MasterRow{language: "de", name: "Deutsche", playlist_path: "subs/de/"}
         ],
         video: [
-          %HLS.Plg.Types.MasterRow{bandwidth: 1725000, resolution: "1280x720", path: "video/720p/playlist.m3u8"},
-          %HLS.Plg.Types.MasterRow{bandwidth: 3400000, resolution: "1920x1080", path: "video/1080p/playlist.m3u8"}
+          %HLS.Plg.Types.MasterRow{bandwidth: 1725000, resolution: "1280x720", playlist_path: "video/720p/"},
+          %HLS.Plg.Types.MasterRow{bandwidth: 3400000, resolution: "1920x1080", playlist_path: "video/1080p/"}
         ]
       }
 

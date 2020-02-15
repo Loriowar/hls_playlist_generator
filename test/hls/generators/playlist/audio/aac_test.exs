@@ -20,7 +20,7 @@ defmodule HLS.PlgTest.Generators.Playlist.Audio.AAC do
       segment_0004.aac
       #EXT-X-ENDLIST
       """
-    assert HLS.Plg.Generators.Playlist.Audio.AAC.generate(40) == result
+    assert HLS.Plg.Generators.Playlist.Audio.AAC.generate(40, 0) == result
   end
 
   test "fractional number of segments in a duration" do
@@ -43,7 +43,7 @@ defmodule HLS.PlgTest.Generators.Playlist.Audio.AAC do
       segment_0005.aac
       #EXT-X-ENDLIST
       """
-    assert HLS.Plg.Generators.Playlist.Audio.AAC.generate(42.2) == result
+    assert HLS.Plg.Generators.Playlist.Audio.AAC.generate(42.2, 0) == result
   end
 
   test "proper media sequence based on input args" do

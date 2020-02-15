@@ -87,8 +87,30 @@ defmodule HLS.Plg do
 
   @doc """
     Generate a master playlist for HLS format
+
+    ## Examples
+
+      ```elixir
+      > HLS.Plg.generate_master_playlist(42) |> IO.puts
+      #EXTM3U
+
+      #EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="audio",LANGUAGE="en",NAME="English",DEFAULT=YES,AUTOSELECT=YES,URI="playlist.m3u8"
+
+      #EXT-X-MEDIA:TYPE=SUBTITLES,GROUP-ID="subs",LANGUAGE="en",NAME="English",DEFAULT=NO,AUTOSELECT=YES,FORCED=NO,URI="playlist.m3u8"
+
+      #EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=510000,AUDIO="audio",SUBTITLES="subs",RESOLUTION=640x480
+      playlist.m3u8
+      ```
+
   """
   def generate_master_playlist(_args) do
     HLS.Plg.Generators.Playlist.Master.generate(%HLS.Plg.Types.Master{audio: [%HLS.Plg.Types.MasterRow{}], subtitles: [%HLS.Plg.Types.MasterRow{}], video: [%HLS.Plg.Types.MasterRow{}]})
+  end
+
+  @doc """
+    Generate all playlists for HLS format
+  """
+  def generate_all(args) do
+    HLS.Plg.Generators.Playlist.All.generate(args)
   end
 end

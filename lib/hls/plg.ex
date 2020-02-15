@@ -29,8 +29,8 @@ defmodule HLS.Plg do
       ```
 
   """
-  def generate_ts_playlist(duration, sequence_number \\ 0) do
-    HLS.Plg.Generators.Playlist.Video.TS.generate(duration, sequence_number)
+  def generate_ts_playlist(duration, sequence_number \\ 0, segment_path \\ "") do
+    HLS.Plg.Generators.Playlist.Video.TS.generate(duration, sequence_number, segment_path)
   end
 
   @doc """
@@ -59,8 +59,8 @@ defmodule HLS.Plg do
       ```
 
   """
-  def generate_aac_playlist(duration, sequence_number \\ 0) do
-    HLS.Plg.Generators.Playlist.Audio.AAC.generate(duration, sequence_number)
+  def generate_aac_playlist(duration, sequence_number \\ 0, segment_path \\ "") do
+    HLS.Plg.Generators.Playlist.Audio.AAC.generate(duration, sequence_number, segment_path)
   end
 
   @doc """
@@ -81,8 +81,8 @@ defmodule HLS.Plg do
       ```
 
   """
-  def generate_vtt_playlist(duration, sequence_number \\ 0) do
-    HLS.Plg.Generators.Playlist.Subtitle.VTT.generate(duration, sequence_number)
+  def generate_vtt_playlist(duration, sequence_number \\ 0, segment_path \\ "") do
+    HLS.Plg.Generators.Playlist.Subtitle.VTT.generate(duration, sequence_number, segment_path)
   end
 
   @doc """

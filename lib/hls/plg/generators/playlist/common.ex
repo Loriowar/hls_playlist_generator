@@ -51,7 +51,7 @@ defmodule HLS.Plg.Generators.Playlist.Common do
 
   # input: 42, output: "segment_0042.ts"
   defp segment_name(segment_number, args) when is_integer(segment_number) do
-    "#{args.segment_basename}#{segment_number |> to_segment_number_format(args.segment_number_length)}#{args.segment_extension}"
+    "#{args.segment_path}#{args.segment_basename}#{segment_number |> to_segment_number_format(args.segment_number_length)}#{args.segment_extension}"
   end
 
   # input: 10.2, output: "10.200000"

@@ -2,8 +2,9 @@ defmodule HLS.Plg.Generators.Playlist.Audio.AAC do
   @behaviour HLS.Plg.Behaviours.Generators.Operational
 
   @spec generate(number, integer) :: bitstring
-  def generate(duration, sequence_number \\ 0) do
-    args = playlist_args(duration, sequence_number)
+  def generate(duration, sequence_number \\ 0, segment_path \\ "")
+      when is_number(duration) and is_integer(sequence_number) and is_bitstring(segment_path) do
+    args = playlist_args(duration, sequence_number, segment_path)
 
     HLS.Plg.Generators.Playlist.Common.generate(args, opening(args), ending(args))
   end
@@ -24,8 +25,8 @@ defmodule HLS.Plg.Generators.Playlist.Audio.AAC do
     "#EXT-X-ENDLIST"
   end
 
-  @spec playlist_args(number, integer) :: HLS.Plg.Types.Common.t
-  def playlist_args(duration, sequence_number \\ 0) do
-    %HLS.Plg.Types.Common{duration: duration, segment_extension: ".aac", sequence_number: sequence_number}
+  @spec playlist_args(number, integer, bitstring) :: HLS.Plg.Types.Common.t
+  def playlist_args(duration, sequence_number \\ 0, segment_path \\ "") do
+    %HLS.Plg.Types.Common{duration: duration, segment_extension: ".aac", sequence_number: sequence_number, segment_path: segment_path}
   end
 end

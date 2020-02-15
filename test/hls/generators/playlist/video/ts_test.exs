@@ -60,4 +60,19 @@ defmodule HLS.PlgTest.Generators.Playlist.Video.TS do
       """
     assert HLS.Plg.Generators.Playlist.Video.TS.generate(10, 2) == result
   end
+
+  test "proper path to sequence based on input args" do
+    result =
+      """
+      #EXTM3U
+      #EXT-X-VERSION:3
+      #EXT-X-MEDIA-SEQUENCE:2
+      #EXT-X-ALLOW-CACHE:YES
+      #EXT-X-TARGETDURATION:10
+      #EXTINF:10.000000,
+      video/segment_0001.ts
+      #EXT-X-ENDLIST
+      """
+    assert HLS.Plg.Generators.Playlist.Video.TS.generate(10, 2, "video/") == result
+  end
 end

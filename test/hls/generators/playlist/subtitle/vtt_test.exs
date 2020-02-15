@@ -46,4 +46,19 @@ defmodule HLS.PlgTest.Generators.Playlist.Subtitle.VTT do
       """
     assert HLS.Plg.Generators.Playlist.Subtitle.VTT.generate(10, 2) == result
   end
+
+  test "proper path to sequence based on input args" do
+    result =
+      """
+      #EXTM3U
+      #EXT-X-VERSION:3
+      #EXT-X-MEDIA-SEQUENCE:2
+      #EXT-X-ALLOW-CACHE:YES
+      #EXT-X-TARGETDURATION:10
+      #EXTINF:10.000000,
+      subs/segment_0001.vtt
+      #EXT-X-ENDLIST
+      """
+    assert HLS.Plg.Generators.Playlist.Subtitle.VTT.generate(10, 2, "subs/") == result
+  end
 end

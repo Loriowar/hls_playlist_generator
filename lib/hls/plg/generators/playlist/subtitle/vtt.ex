@@ -2,8 +2,9 @@ defmodule HLS.Plg.Generators.Playlist.Subtitle.VTT do
   @behaviour HLS.Plg.Behaviours.Generators.Operational
 
   @spec generate(number, integer) :: bitstring
-  def generate(duration, sequence_number \\ 0) do
-    args = playlist_args(duration, sequence_number)
+  def generate(duration, sequence_number \\ 0, segment_path \\ "")
+      when is_number(duration) and is_integer(sequence_number) and is_bitstring(segment_path) do
+    args = playlist_args(duration, sequence_number, segment_path)
 
     HLS.Plg.Generators.Playlist.Common.generate(args, opening(args), ending(args))
   end
@@ -24,15 +25,16 @@ defmodule HLS.Plg.Generators.Playlist.Subtitle.VTT do
     "#EXT-X-ENDLIST"
   end
 
-  @spec playlist_args(number, integer) :: HLS.Plg.Types.Common.t
-  def playlist_args(duration, sequence_number \\ 0) do
+  @spec playlist_args(number, integer, bitstring) :: HLS.Plg.Types.Common.t
+  def playlist_args(duration, sequence_number \\ 0, segment_path \\ "") do
     target_duration = duration / 1 |> Float.ceil |> trunc
 
     %HLS.Plg.Types.Common{
       duration: duration,
       target_duration: target_duration,
-      segment_extension: ".vtt",
-      sequence_number: sequence_number
+      sequence_number: sequence_number,
+      segment_path: segment_path,
+      segment_extension: ".vtt"
     }
   end
 end

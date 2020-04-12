@@ -30,7 +30,7 @@ defmodule HLS.Plg.MixProject do
   end
 
   defp description do
-    "Generator of all available m3u8 playlists types for HLS protocol with a minimal valid set of the attributes."
+    "Generator of all available m3u8 playlist types for HLS protocol with a minimal valid set of the attributes."
   end
 
   defp package do

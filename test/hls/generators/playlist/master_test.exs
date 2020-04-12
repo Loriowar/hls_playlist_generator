@@ -7,7 +7,7 @@ defmodule HLS.PlgTest.Generators.Playlist.Master do
       """
       #EXTM3U
 
-      #EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="audio",LANGUAGE="ru",NAME="Russian",DEFAULT=YES,AUTOSELECT=YES,URI="audio/rus/playlist.m3u8"
+      #EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="audio",LANGUAGE="ru",NAME="Russian",DEFAULT=YES,AUTOSELECT=YES,CHANNELS="2",URI="audio/rus/playlist.m3u8"
 
       #EXT-X-MEDIA:TYPE=SUBTITLES,GROUP-ID="subs",LANGUAGE="en",NAME="English",DEFAULT=NO,AUTOSELECT=YES,FORCED=YES,URI="subs/en/playlist.m3u8"
 
@@ -29,8 +29,8 @@ defmodule HLS.PlgTest.Generators.Playlist.Master do
       """
       #EXTM3U
 
-      #EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="audio",LANGUAGE="ru",NAME="Russian",DEFAULT=YES,AUTOSELECT=YES,URI="audio/rus/playlist.m3u8"
-      #EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="audio",LANGUAGE="de",NAME="Deutsche",DEFAULT=NO,AUTOSELECT=YES,URI="audio/de/playlist.m3u8"
+      #EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="audio",LANGUAGE="ru",NAME="Russian",DEFAULT=YES,AUTOSELECT=YES,CHANNELS="2",URI="audio/rus/playlist.m3u8"
+      #EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="audio",LANGUAGE="de",NAME="Deutsche",DEFAULT=NO,AUTOSELECT=YES,CHANNELS="2",URI="audio/de/playlist.m3u8"
 
       #EXT-X-MEDIA:TYPE=SUBTITLES,GROUP-ID="subs",LANGUAGE="en",NAME="English",DEFAULT=NO,AUTOSELECT=YES,FORCED=YES,URI="subs/en/playlist.m3u8"
       #EXT-X-MEDIA:TYPE=SUBTITLES,GROUP-ID="subs",LANGUAGE="de",NAME="Deutsche",DEFAULT=NO,AUTOSELECT=YES,FORCED=NO,URI="subs/de/playlist.m3u8"

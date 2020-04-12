@@ -20,7 +20,7 @@ defmodule HLS.PlgTest.Generators.Playlist.All do
           """
           #EXTM3U
 
-          #EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="audio",LANGUAGE="ru",NAME="Russian",DEFAULT=YES,AUTOSELECT=YES,URI="audio/rus/playlist.m3u8"
+          #EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="audio",LANGUAGE="ru",NAME="Russian",DEFAULT=YES,AUTOSELECT=YES,CHANNELS="4",URI="audio/rus/playlist.m3u8"
 
           #EXT-X-MEDIA:TYPE=SUBTITLES,GROUP-ID="subs",LANGUAGE="en",NAME="English",DEFAULT=NO,AUTOSELECT=YES,FORCED=YES,URI="subs/en/playlist.m3u8"
 
@@ -35,6 +35,7 @@ defmodule HLS.PlgTest.Generators.Playlist.All do
             %HLS.Plg.Types.MasterRow{
               language: "ru",
               name: "Russian",
+              channels: 4,
               playlist_path: "audio/rus/",
               details: %HLS.Plg.Types.Common{duration: 3.2, sequence_number: 0}
             }
@@ -167,8 +168,8 @@ defmodule HLS.PlgTest.Generators.Playlist.All do
           """
           #EXTM3U
 
-          #EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="audio",LANGUAGE="ru",NAME="Russian",DEFAULT=YES,AUTOSELECT=YES,URI="audio/rus/playlist.m3u8"
-          #EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="audio",LANGUAGE="de",NAME="Deutsche",DEFAULT=NO,AUTOSELECT=YES,URI="audio/de/playlist.m3u8"
+          #EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="audio",LANGUAGE="ru",NAME="Russian",DEFAULT=YES,AUTOSELECT=YES,CHANNELS="4",URI="audio/rus/playlist.m3u8"
+          #EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="audio",LANGUAGE="de",NAME="Deutsche",DEFAULT=NO,AUTOSELECT=YES,CHANNELS="4",URI="audio/de/playlist.m3u8"
 
           #EXT-X-MEDIA:TYPE=SUBTITLES,GROUP-ID="subs",LANGUAGE="en",NAME="English",DEFAULT=NO,AUTOSELECT=YES,FORCED=YES,URI="subs/en/playlist.m3u8"
           #EXT-X-MEDIA:TYPE=SUBTITLES,GROUP-ID="subs",LANGUAGE="de",NAME="Deutsche",DEFAULT=NO,AUTOSELECT=YES,FORCED=NO,URI="subs/de/playlist.m3u8"
@@ -186,12 +187,14 @@ defmodule HLS.PlgTest.Generators.Playlist.All do
           %HLS.Plg.Types.MasterRow{
             language: "ru",
             name: "Russian",
+            channels: 4,
             playlist_path: "audio/rus/",
             details: %HLS.Plg.Types.Common{duration: 33.1, sequence_number: 0}
           },
           %HLS.Plg.Types.MasterRow{
             language: "de",
             name: "Deutsche",
+            channels: 4,
             playlist_path: "audio/de/",
             details: %HLS.Plg.Types.Common{duration: 33.2, sequence_number: 1}
           }

@@ -20,7 +20,7 @@ defmodule HLS.Plg.Generators.Playlist.Master do
   end
 
   defp render_audio_row(row, default \\ false) when is_boolean(default) do
-    ~s(#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="#{@audio_id}",LANGUAGE="#{row.language}",NAME="#{row.name}",DEFAULT=#{bool_to_render_format(default)},AUTOSELECT=YES,URI="#{row.playlist_path}#{row.playlist_name}")
+    ~s(#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="#{@audio_id}",LANGUAGE="#{row.language}",NAME="#{row.name}",DEFAULT=#{bool_to_render_format(default)},AUTOSELECT=YES,CHANNELS="#{row.channels}",URI="#{row.playlist_path}#{row.playlist_name}")
   end
 
   defp bool_to_render_format(flag) do

@@ -50,6 +50,6 @@ defmodule HLS.Plg.Generators.Playlist.Master do
   end
 
   defp render_video_row(row) do
-    ~s(#EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=#{row.bandwidth},AUDIO="#{@audio_id}",SUBTITLES="#{@subtitles_id}",RESOLUTION=#{row.resolution}\n#{row.playlist_path}#{row.playlist_name})
+    ~s(#EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=#{row.bandwidth},AUDIO="#{@audio_id}",SUBTITLES="#{@subtitles_id}",RESOLUTION=#{row.resolution},FRAME-RATE=#{row.framerate}\n#{row.playlist_path}#{row.playlist_name})
   end
 end

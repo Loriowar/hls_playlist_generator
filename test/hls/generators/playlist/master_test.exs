@@ -11,7 +11,7 @@ defmodule HLS.PlgTest.Generators.Playlist.Master do
 
       #EXT-X-MEDIA:TYPE=SUBTITLES,GROUP-ID="subs",LANGUAGE="en",NAME="English",DEFAULT=NO,AUTOSELECT=YES,FORCED=YES,URI="subs/en/playlist.m3u8"
 
-      #EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=1725000,AUDIO="audio",SUBTITLES="subs",RESOLUTION=1280x720
+      #EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=1725000,AUDIO="audio",SUBTITLES="subs",RESOLUTION=1280x720,FRAME-RATE=24
       video/pl.m3u8
       """
       args =
@@ -35,9 +35,9 @@ defmodule HLS.PlgTest.Generators.Playlist.Master do
       #EXT-X-MEDIA:TYPE=SUBTITLES,GROUP-ID="subs",LANGUAGE="en",NAME="English",DEFAULT=NO,AUTOSELECT=YES,FORCED=YES,URI="subs/en/playlist.m3u8"
       #EXT-X-MEDIA:TYPE=SUBTITLES,GROUP-ID="subs",LANGUAGE="de",NAME="Deutsche",DEFAULT=NO,AUTOSELECT=YES,FORCED=NO,URI="subs/de/playlist.m3u8"
 
-      #EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=1725000,AUDIO="audio",SUBTITLES="subs",RESOLUTION=1280x720
+      #EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=1725000,AUDIO="audio",SUBTITLES="subs",RESOLUTION=1280x720,FRAME-RATE=24
       video/720p/playlist.m3u8
-      #EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=3400000,AUDIO="audio",SUBTITLES="subs",RESOLUTION=1920x1080
+      #EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=3400000,AUDIO="audio",SUBTITLES="subs",RESOLUTION=1920x1080,FRAME-RATE=25
       video/1080p/playlist.m3u8
       """
     args =
@@ -52,7 +52,7 @@ defmodule HLS.PlgTest.Generators.Playlist.Master do
         ],
         video: [
           %HLS.Plg.Types.MasterRow{bandwidth: 1725000, resolution: "1280x720", playlist_path: "video/720p/"},
-          %HLS.Plg.Types.MasterRow{bandwidth: 3400000, resolution: "1920x1080", playlist_path: "video/1080p/"}
+          %HLS.Plg.Types.MasterRow{bandwidth: 3400000, resolution: "1920x1080", framerate: 25, playlist_path: "video/1080p/"}
         ]
       }
 

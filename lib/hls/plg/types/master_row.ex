@@ -7,7 +7,8 @@ defmodule HLS.Plg.Types.MasterRow do
             channels: 2,
             playlist_path: "",
             playlist_name: "playlist.m3u8",
-            details: %HLS.Plg.Types.Common{}
+            details: %HLS.Plg.Types.Common{},
+            meta: %{}
 
   @type t ::
           %__MODULE__{
@@ -19,6 +20,7 @@ defmodule HLS.Plg.Types.MasterRow do
             channels: integer,
             playlist_path: bitstring,
             playlist_name: bitstring,
-            details: HLS.Plg.Types.Common.t
+            details: HLS.Plg.Types.Common.t,
+            meta: map
           }
 end

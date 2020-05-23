@@ -1,9 +1,9 @@
 defmodule HLS.Plg.Generators.Playlist.All do
-  @spec generate(HLS.Plg.Types.Master.t) :: bitstring
+  @spec generate(HLS.Plg.Types.Master.t) :: HLS.Plg.Types.All.t
   def generate(args) do
-    %{
+    %HLS.Plg.Types.All{
       master: generate_mater(args),
-      common: %{
+      common: %HLS.Plg.Types.CommonContainer{
         audio: generate_audio(args),
         subtitles: generate_subtitles(args),
         video: generate_video(args)

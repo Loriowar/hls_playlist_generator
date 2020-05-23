@@ -4,8 +4,8 @@ defmodule HLS.PlgTest.Generators.Playlist.All do
 
   test "proper amount of rows" do
     result =
-      %{
-        common: %{
+      %HLS.Plg.Types.All{
+        common: %HLS.Plg.Types.CommonContainer{
           audio: %{
             "audio/rus/" => "#EXTM3U\n#EXT-X-VERSION:3\n#EXT-X-MEDIA-SEQUENCE:0\n#EXT-X-ALLOW-CACHE:YES\n#EXT-X-TARGETDURATION:10\n#EXTINF:3.200000,\nsegment_0001.aac\n#EXT-X-ENDLIST\n"
           },
@@ -65,8 +65,8 @@ defmodule HLS.PlgTest.Generators.Playlist.All do
 
   test "multiple items in each playlist section" do
     result =
-      %{
-        common: %{
+      %HLS.Plg.Types.All{
+        common: %HLS.Plg.Types.CommonContainer{
           audio: %{
             "audio/de/" =>
               """

@@ -22,7 +22,7 @@ defmodule HLS.Plg.Generators.Playlist.Common do
     else
       common_prefix = segment_prefix(args.target_duration)
 
-      Enum.reduce(1..amount_segments, "", fn n, pl ->
+      Enum.reduce(0..(amount_segments - 1), "", fn n, pl ->
         "#{pl}#{common_prefix}\n#{segment_name(n, args)}\n"
       end)
     end
@@ -34,7 +34,12 @@ defmodule HLS.Plg.Generators.Playlist.Common do
 
     if last_segment_duration > 0 do
       last_segment_prefix = last_segment_duration |> segment_prefix
-      last_segment_name = segment_name(amount_segments + 1, args)
+      last_segment_name =
+        if amount_segments == 0 do
+          segment_name(amount_segments, args)
+        else
+          segment_name(amount_segments + 1, args)
+        end
 
       "#{last_segment_prefix}\n#{last_segment_name}\n"
     else
